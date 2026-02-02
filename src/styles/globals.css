@@ -1,0 +1,561 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import './neural-animations.css';
+@import './electric-dreams.css';
+
+/* ============================================
+   ELECTRIC DREAMS - Global Styles
+   ============================================ */
+
+/* Base styles */
+html, body, #root {
+  @apply min-h-screen w-full m-0 p-0 overflow-x-hidden;
+  background-color: #0A0A1A;
+}
+
+body {
+  @apply text-white antialiased;
+  font-family: 'Space Mono', 'Courier New', monospace;
+  background:
+    linear-gradient(180deg, #0A0A1A 0%, #0F0F2A 50%, #0A0A1A 100%);
+}
+
+/* Electric Dreams Root Variables */
+:root {
+  --primary-gradient: linear-gradient(135deg, #00FFFF, #FF00FF);
+  --accent-color: #00FFFF;
+  --text-color: #F0F0FF;
+  --animation-speed: 100%;
+  --particle-density: 50;
+  --blur-amount: 1;
+  --brightness: 0.5;
+
+  /* Electric Dreams specific */
+  --ed-primary: #00FFFF;
+  --ed-secondary: #FFB000;
+  --ed-accent: #FF00FF;
+  --ed-bg: #0A0A1A;
+}
+
+/* Theme-related utility classes */
+.theme-gradient {
+  background: linear-gradient(135deg, #00FFFF, #FF00FF);
+}
+
+.theme-accent {
+  color: var(--ed-primary);
+}
+
+/* Performance mode */
+.performance-mode {
+  --blur-amount: 0;
+  --animation-speed: 50%;
+  --particle-density: 25;
+}
+
+/* Animation control */
+.reduce-animations * {
+  transition: none !important;
+  animation: none !important;
+}
+
+/* Particle control */
+.no-particles .particle {
+  display: none !important;
+}
+
+/* Blur effects */
+.theme-blur {
+  backdrop-filter: blur(calc(var(--blur-amount) * 16px));
+}
+
+/* Brightness control */
+.theme-brightness {
+  filter: brightness(var(--brightness));
+}
+
+/* ============================================
+   SCROLLBAR - CRT Style
+   ============================================ */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0A0A1A;
+  border-left: 1px solid #006666;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #00FFFF, #00B8B8);
+  border-radius: 4px;
+  box-shadow: 0 0 5px rgba(0, 255, 255, 0.3);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #7FFFFF, #00FFFF);
+  box-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+}
+
+/* Firefox scrollbar */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #00FFFF #0A0A1A;
+}
+
+/* ============================================
+   ANIMATION KEYFRAMES
+   ============================================ */
+@keyframes theme-animation {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+/* Neon Glow Pulse */
+@keyframes neonPulse {
+  0%, 100% {
+    box-shadow: 0 0 5px #00FFFF, 0 0 10px #00FFFF;
+  }
+  50% {
+    box-shadow: 0 0 10px #00FFFF, 0 0 20px #00FFFF, 0 0 30px #00FFFF;
+  }
+}
+
+/* Grid Flow */
+@keyframes gridFlow {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 50px 50px;
+  }
+}
+
+/* Animation classes */
+.theme-animate {
+  animation: theme-animation calc(2s * (100 / var(--animation-speed))) infinite;
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.animate-slideup {
+  animation: slideInUp 0.5s ease-out forwards;
+}
+
+.animate-fadein {
+  animation: fadeIn 0.3s ease-out forwards;
+}
+
+.animate-slidescale {
+  animation: slideInScale 0.5s ease-out forwards;
+}
+
+.animate-neon-pulse {
+  animation: neonPulse 2s ease-in-out infinite;
+}
+
+.animate-grid-flow {
+  animation: gridFlow 20s linear infinite;
+}
+
+/* Staggered animations */
+.stagger-animation > * {
+  opacity: 0;
+  animation: slideInUp 0.5s ease-out forwards;
+}
+
+.stagger-animation > *:nth-child(1) { animation-delay: 0.1s; }
+.stagger-animation > *:nth-child(2) { animation-delay: 0.2s; }
+.stagger-animation > *:nth-child(3) { animation-delay: 0.3s; }
+.stagger-animation > *:nth-child(4) { animation-delay: 0.4s; }
+.stagger-animation > *:nth-child(5) { animation-delay: 0.5s; }
+.stagger-animation > *:nth-child(6) { animation-delay: 0.6s; }
+
+/* ============================================
+   MOBILE RESPONSIVE STYLES
+   ============================================ */
+@media (max-width: 768px) {
+  /* Base mobile viewport settings */
+  html, body, #root {
+    overflow-x: hidden;
+    touch-action: manipulation;
+  }
+
+  /* Mobile-first typography */
+  body {
+    font-size: 14px;
+    line-height: 1.4;
+  }
+
+  /* Mobile touch targets */
+  button, .clickable {
+    min-height: 44px;
+    min-width: 44px;
+  }
+
+  /* Mobile scrollbar */
+  ::-webkit-scrollbar {
+    width: 4px;
+    height: 4px;
+  }
+
+  /* Mobile Taskbar Styles */
+  .mobile-taskbar {
+    height: 70px !important;
+    padding: 8px 12px !important;
+    flex-direction: column;
+    justify-content: space-between;
+    background: linear-gradient(180deg, #0F0F2A, #0A0A1A) !important;
+    border-top: 1px solid #006666 !important;
+  }
+
+  .mobile-taskbar .taskbar-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    gap: 8px;
+  }
+
+  .mobile-taskbar button {
+    padding: 6px 8px !important;
+    font-size: 12px !important;
+    border-color: #00FFFF !important;
+  }
+
+  .mobile-taskbar button span {
+    display: none;
+  }
+
+  .mobile-taskbar .show-text span {
+    display: inline;
+  }
+
+  .mobile-taskbar svg {
+    width: 18px !important;
+    height: 18px !important;
+    color: #00FFFF;
+  }
+
+  /* Mobile Side Dock Styles */
+  .mobile-side-dock {
+    position: fixed !important;
+    bottom: 80px !important;
+    right: 16px !important;
+    left: auto !important;
+    top: auto !important;
+    transform: none !important;
+    z-index: 50 !important;
+  }
+
+  .mobile-side-dock .dock-container {
+    flex-direction: row !important;
+    gap: 12px !important;
+    padding: 12px 16px !important;
+    background: rgba(10, 10, 26, 0.95) !important;
+    border: 1px solid #006666 !important;
+  }
+
+  .mobile-side-dock .character-icon {
+    width: 48px !important;
+    height: 48px !important;
+  }
+
+  /* Mobile Window Management */
+  .mobile-window {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    border-radius: 0 !important;
+    border: none !important;
+    z-index: 40 !important;
+    overflow: hidden !important;
+    background: #0A0A1A !important;
+  }
+
+  .mobile-window .window-header {
+    height: 60px !important;
+    padding: 0 16px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    min-height: 60px !important;
+    background: linear-gradient(180deg, #141428, #0A0A1A) !important;
+    border-bottom: 1px solid #006666 !important;
+  }
+
+  .mobile-window .window-content {
+    height: calc(100vh - 60px) !important;
+    overflow-y: auto !important;
+    padding: 0 !important;
+  }
+
+  /* Mobile Widget System */
+  .mobile-widget-grid {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
+    padding: 16px !important;
+    margin-bottom: 80px !important;
+  }
+
+  .mobile-widget {
+    position: relative !important;
+    transform: none !important;
+    width: 100% !important;
+    height: auto !important;
+    min-height: 200px !important;
+    border-radius: 12px !important;
+    background: #12122A !important;
+    border: 1px solid #006666 !important;
+  }
+
+  /* Mobile animations optimization */
+  .reduce-motion * {
+    animation-duration: 0.3s !important;
+    transition-duration: 0.3s !important;
+  }
+
+  /* Mobile Terminal */
+  .mobile-terminal {
+    font-size: 12px !important;
+    line-height: 1.4 !important;
+    padding: 12px !important;
+    font-family: 'VT323', monospace !important;
+    color: #FFB000 !important;
+  }
+
+  .mobile-terminal .terminal-input {
+    font-size: 16px !important;
+    padding: 12px !important;
+    background: #0A0A1A !important;
+    border: 1px solid #00FFFF !important;
+    color: #FFB000 !important;
+  }
+
+  .mobile-terminal .terminal-output {
+    max-height: calc(100vh - 200px) !important;
+    overflow-y: auto !important;
+  }
+
+  /* Mobile Chat Interface */
+  .mobile-chat {
+    display: flex !important;
+    flex-direction: column !important;
+    height: 100% !important;
+  }
+
+  .mobile-chat .chat-messages {
+    flex: 1 !important;
+    overflow-y: auto !important;
+    padding: 16px !important;
+  }
+
+  .mobile-chat .chat-input-container {
+    padding: 16px !important;
+    border-top: 1px solid #006666 !important;
+    background: #0F0F2A !important;
+  }
+
+  .mobile-chat .chat-input {
+    font-size: 16px !important;
+    padding: 12px 16px !important;
+    border-radius: 8px !important;
+    background: #0A0A1A !important;
+    border: 1px solid #00FFFF !important;
+    color: #F0F0FF !important;
+  }
+
+  .mobile-chat .message-bubble {
+    max-width: 85% !important;
+    padding: 12px 16px !important;
+    margin-bottom: 12px !important;
+    border-radius: 12px !important;
+  }
+
+  /* Mobile Folder View */
+  .mobile-folder-grid {
+    display: grid !important;
+    grid-template-columns: repeat(auto-fit, minmax(80px, 1fr)) !important;
+    gap: 16px !important;
+    padding: 16px !important;
+  }
+
+  .mobile-folder-item {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    padding: 12px !important;
+    border-radius: 8px !important;
+    text-align: center !important;
+    background: #12122A !important;
+    border: 1px solid transparent !important;
+    transition: all 0.2s ease !important;
+  }
+
+  .mobile-folder-item:hover {
+    border-color: #00FFFF !important;
+    box-shadow: 0 0 10px rgba(0, 255, 255, 0.2) !important;
+  }
+
+  .mobile-folder-item svg {
+    width: 32px !important;
+    height: 32px !important;
+    margin-bottom: 8px !important;
+    color: #00FFFF !important;
+  }
+
+  .mobile-folder-item .folder-name {
+    font-size: 12px !important;
+    line-height: 1.2 !important;
+    color: #A0A0CC !important;
+  }
+
+  /* Mobile System Settings */
+  .mobile-settings {
+    padding: 16px !important;
+  }
+
+  .mobile-settings .settings-tabs {
+    display: flex !important;
+    overflow-x: auto !important;
+    gap: 8px !important;
+    margin-bottom: 16px !important;
+    border-bottom: 1px solid #006666 !important;
+    padding-bottom: 8px !important;
+  }
+
+  .mobile-settings .settings-tab {
+    flex-shrink: 0 !important;
+    padding: 8px 12px !important;
+    font-size: 14px !important;
+    color: #A0A0CC !important;
+    border: 1px solid transparent !important;
+    border-radius: 4px !important;
+  }
+
+  .mobile-settings .settings-tab.active {
+    color: #00FFFF !important;
+    border-color: #00FFFF !important;
+    background: rgba(0, 255, 255, 0.1) !important;
+  }
+
+  .mobile-settings .settings-content {
+    max-height: calc(100vh - 200px) !important;
+    overflow-y: auto !important;
+  }
+
+  .mobile-settings .settings-grid {
+    grid-template-columns: 1fr !important;
+    gap: 12px !important;
+  }
+
+  .mobile-settings .settings-item {
+    padding: 12px !important;
+    border-radius: 8px !important;
+    background: #12122A !important;
+    border: 1px solid #1A1A3A !important;
+  }
+}
+
+/* Tablet breakpoint */
+@media (min-width: 768px) and (max-width: 1024px) {
+  .mobile-widget-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+
+  .mobile-taskbar {
+    height: 60px !important;
+    flex-direction: row !important;
+    justify-content: space-between !important;
+  }
+
+  .mobile-taskbar button span {
+    display: inline !important;
+  }
+}
+
+/* ============================================
+   UTILITY CLASSES
+   ============================================ */
+
+/* Hide scrollbar utility */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* Neon text utilities */
+.text-neon-cyan {
+  color: #00FFFF;
+  text-shadow: 0 0 5px #00FFFF, 0 0 10px #00FFFF;
+}
+
+.text-neon-amber {
+  color: #FFB000;
+  text-shadow: 0 0 5px #FFB000, 0 0 10px #FFB000;
+}
+
+.text-neon-magenta {
+  color: #FF00FF;
+  text-shadow: 0 0 5px #FF00FF, 0 0 10px #FF00FF;
+}
+
+/* Glass effect with Electric Dreams colors */
+.glass-ed {
+  background: rgba(10, 10, 26, 0.8);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(0, 255, 255, 0.2);
+}
