@@ -65,20 +65,20 @@ Downloads/
 Music/
 Pictures/
 system.config
-omnia.core
+edgar.core
 dreams.ai
 love.wav
 `;
         break;
 
       case 'whoami':
-        newCommand.output = 'omnia-user';
+        newCommand.output = 'edgar-user';
         break;
 
       case 'system':
         newCommand.output = `
 Electric Dreams OS v1.984
-Running on Omnia Neural Core
+Running on Edgar Neural Core
 Memory: 640K / 1MB (should be enough for anybody)
 CPU: Intel 8088 Emulation Mode
 GPU: CGA Graphics Adapter
@@ -140,7 +140,7 @@ Storage: Pinecone Quantum Drive
       `}>
         <div className="flex items-center gap-2">
           <TerminalIcon className={`${isMobile ? 'w-5 h-5' : 'w-4 h-4'}`} />
-          <span className={`${isMobile ? 'text-base font-medium' : 'text-sm'}`}>Omnia Terminal</span>
+          <span className={`${isMobile ? 'text-base font-medium' : 'text-sm'}`}>Edgar Terminal</span>
         </div>
         <div className="flex items-center gap-2">
           {!isMobile && (
@@ -179,7 +179,7 @@ Storage: Pinecone Quantum Drive
       >
         {/* Welcome Message */}
         <div className="text-ed-amber-400 mb-4">
-          OMNIA TERMINAL v1.984 - Electric Dreams OS
+          EDGAR TERMINAL v1.984 - Electric Dreams OS
           <br />
           Type 'help' for available commands.
           <br />
@@ -189,7 +189,7 @@ Storage: Pinecone Quantum Drive
         {commands.map((cmd, i) => (
           <div key={i} className="space-y-1">
             <div className="flex items-center gap-2">
-              <span className="text-ed-amber-400">omnia@electric-dreams</span>
+              <span className="text-ed-amber-400">edgar@electric-dreams</span>
               <span className="text-gray-400">~</span>
               <span className="text-ed-amber-400">$</span>
               <span className="text-white">{cmd.input}</span>
@@ -202,7 +202,7 @@ Storage: Pinecone Quantum Drive
 
         {/* Current Input */}
         <form onSubmit={handleSubmit} className="flex items-center gap-2">
-          <span className="text-ed-amber-400">omnia@electric-dreams</span>
+          <span className="text-ed-amber-400">edgar@electric-dreams</span>
           <span className="text-gray-400">~</span>
           <span className="text-ed-amber-400">$</span>
           <input

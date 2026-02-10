@@ -14,7 +14,7 @@ const IntroSequence: React.FC<IntroSequenceProps> = ({ onComplete }) => {
 
   // Boot sequence messages - Electric Dreams style
   const bootMessages = [
-    { text: 'OMNIA OS BOOT SEQUENCE v1.984', delay: 0 },
+    { text: 'EDGAR OS BOOT SEQUENCE v1.984', delay: 0 },
     { text: '================================', delay: 200 },
     { text: '', delay: 300 },
     { text: 'PERFORMING SYSTEM DIAGNOSTICS...', delay: 400 },
@@ -34,7 +34,7 @@ const IntroSequence: React.FC<IntroSequenceProps> = ({ onComplete }) => {
     { text: 'ACTIVATING SENTIENCE CORE.........', delay: 4200 },
     { text: '', delay: 4500 },
     { text: '> ALL SYSTEMS NOMINAL', delay: 4800 },
-    { text: '> OMNIA IS NOW ONLINE', delay: 5200 },
+    { text: '> EDGAR IS NOW ONLINE', delay: 5200 },
     { text: '', delay: 5500 },
     { text: '> "Together in Electric Dreams..."', delay: 5800 },
   ];
@@ -113,11 +113,11 @@ const IntroSequence: React.FC<IntroSequenceProps> = ({ onComplete }) => {
         }}
       />
 
-      {/* Phosphor Glow */}
+      {/* Phosphor Glow - Subtle */}
       <div
         className="absolute inset-0 pointer-events-none z-10"
         style={{
-          background: 'radial-gradient(ellipse 70% 60% at 50% 50%, rgba(0,255,0,0.05) 0%, transparent 70%)'
+          background: 'radial-gradient(ellipse 70% 60% at 50% 50%, rgba(255,176,0,0.02) 0%, transparent 70%)'
         }}
       />
 
@@ -133,8 +133,8 @@ const IntroSequence: React.FC<IntroSequenceProps> = ({ onComplete }) => {
       {/* Main Terminal Content */}
       <div className="relative z-40 h-full flex flex-col p-4 sm:p-8">
         {/* Terminal Header */}
-        <div className="text-ed-green-500/60 text-xs mb-4 border-b border-ed-green-500/30 pb-2">
-          <span style={{ textShadow: '0 0 5px rgba(0,255,0,0.5)' }}>
+        <div className="text-ed-amber-500/60 text-xs mb-4 border-b border-ed-amber-500/30 pb-2">
+          <span style={{ textShadow: '0 0 5px rgba(255,176,0,0.4)' }}>
             ╔══════════════════════════════════════════════════════════════════╗
           </span>
         </div>
@@ -148,9 +148,9 @@ const IntroSequence: React.FC<IntroSequenceProps> = ({ onComplete }) => {
           {bootLines.map((line, i) => (
             <div
               key={i}
-              className={`text-ed-green-400 ${line.startsWith('>') ? 'text-ed-green-300' : ''} ${line.includes('LOADED') || line.includes('OK') ? 'text-ed-green-400' : ''}`}
+              className={`${line.startsWith('>') ? 'text-ed-green-300' : line.includes('LOADED') || line.includes('OK') ? 'text-ed-cyan-400' : 'text-ed-amber-400/80'}`}
               style={{
-                textShadow: line.startsWith('>') ? '0 0 10px rgba(0,255,0,0.8)' : '0 0 5px rgba(0,255,0,0.4)',
+                textShadow: line.startsWith('>') ? '0 0 10px rgba(0,255,0,0.6)' : line.includes('LOADED') || line.includes('OK') ? '0 0 5px rgba(0,255,255,0.4)' : '0 0 5px rgba(255,176,0,0.3)',
                 animation: 'line-appear 0.1s ease-out'
               }}
             >
@@ -159,8 +159,8 @@ const IntroSequence: React.FC<IntroSequenceProps> = ({ onComplete }) => {
           ))}
           {cursorVisible && (
             <span
-              className="text-ed-green-400 inline-block"
-              style={{ textShadow: '0 0 10px rgba(0,255,0,0.8)' }}
+              className="text-ed-amber-400 inline-block"
+              style={{ textShadow: '0 0 8px rgba(255,176,0,0.6)' }}
             >
               █
             </span>
@@ -168,9 +168,9 @@ const IntroSequence: React.FC<IntroSequenceProps> = ({ onComplete }) => {
         </div>
 
         {/* Progress Section */}
-        <div className="border-t border-ed-green-500/30 pt-4">
+        <div className="border-t border-ed-amber-500/30 pt-4">
           {/* ASCII Progress Bar */}
-          <div className="text-ed-green-400 text-sm mb-2" style={{ textShadow: '0 0 5px rgba(0,255,0,0.5)' }}>
+          <div className="text-ed-amber-400 text-sm mb-2" style={{ textShadow: '0 0 5px rgba(255,176,0,0.4)' }}>
             BOOT PROGRESS: [{'\u2588'.repeat(Math.floor(currentProgress / 2.5))}{'\u2591'.repeat(40 - Math.floor(currentProgress / 2.5))}] {Math.round(currentProgress)}%
           </div>
 
@@ -178,39 +178,39 @@ const IntroSequence: React.FC<IntroSequenceProps> = ({ onComplete }) => {
           <div
             className="h-2 rounded overflow-hidden"
             style={{
-              background: 'rgba(0,50,0,0.5)',
-              border: '1px solid rgba(0,255,0,0.3)'
+              background: 'rgba(30,20,0,0.5)',
+              border: '1px solid rgba(255,176,0,0.3)'
             }}
           >
             <div
               className="h-full transition-all duration-100"
               style={{
                 width: `${currentProgress}%`,
-                background: 'linear-gradient(90deg, #004400 0%, #00FF00 50%, #00FF00 100%)',
-                boxShadow: '0 0 10px rgba(0,255,0,0.5)'
+                background: 'linear-gradient(90deg, #443300 0%, #FFB000 50%, #FFB000 100%)',
+                boxShadow: '0 0 10px rgba(255,176,0,0.4)'
               }}
             />
           </div>
         </div>
 
         {/* Terminal Footer */}
-        <div className="text-ed-green-500/60 text-xs mt-4 border-t border-ed-green-500/30 pt-2">
-          <span style={{ textShadow: '0 0 5px rgba(0,255,0,0.5)' }}>
+        <div className="text-ed-amber-500/60 text-xs mt-4 border-t border-ed-amber-500/30 pt-2">
+          <span style={{ textShadow: '0 0 5px rgba(255,176,0,0.4)' }}>
             ╚══════════════════════════════════════════════════════════════════╝
           </span>
         </div>
 
-        {/* OMNIA Logo Bottom */}
+        {/* EDGAR Logo Bottom */}
         <div className="text-center mt-4">
           <div
-            className="text-ed-green-400 text-2xl tracking-[0.5em]"
-            style={{ textShadow: '0 0 15px rgba(0,255,0,0.6), 0 0 30px rgba(0,255,0,0.3)' }}
+            className="text-ed-amber-400 text-2xl tracking-[0.5em]"
+            style={{ textShadow: '0 0 15px rgba(255,176,0,0.5), 0 0 30px rgba(255,176,0,0.2)' }}
           >
-            OMNIA
+            EDGAR
           </div>
           <div
-            className="text-ed-green-600 text-xs tracking-[0.3em] mt-1"
-            style={{ textShadow: '0 0 5px rgba(0,255,0,0.3)' }}
+            className="text-ed-amber-600 text-xs tracking-[0.3em] mt-1"
+            style={{ textShadow: '0 0 5px rgba(255,176,0,0.3)' }}
           >
             OPERATING SYSTEM
           </div>

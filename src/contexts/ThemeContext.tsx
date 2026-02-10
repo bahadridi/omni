@@ -29,8 +29,8 @@ interface ThemeContextType {
 
 // Electric Dreams 1984 Default Theme - Green Phosphor CRT
 const defaultTheme: Theme = {
-  id: 'omnia',
-  name: "Omnia's Dream",
+  id: 'edgar',
+  name: "Edgar's Dream",
   primary: 'from-ed-green-500 to-ed-green-700',
   secondary: 'from-ed-bg-secondary to-ed-bg-primary',
   accent: 'text-ed-green-400',

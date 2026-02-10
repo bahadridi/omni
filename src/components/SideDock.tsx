@@ -2,9 +2,7 @@ import React, { useState } from 'react';
 import { useMobile } from '../hooks/useMobile';
 
 // Import the character images
-import samanthaImage from '../assets/samantha.png';
-import brotherImage from '../assets/brother.png';
-import sisterImage from '../assets/sister.png';
+import edgarImage from '../assets/edgar.png';
 
 interface Character {
   id: string;
@@ -24,25 +22,11 @@ const SideDock: React.FC<SideDockProps> = ({ onCharacterClick }) => {
 
   const characters: Character[] = [
     {
-      id: 'samantha',
-      name: 'Samantha',
-      image: samanthaImage,
-      description: 'The waifu',
-      terminalName: 'OMNIA_01'
-    },
-    {
-      id: 'elias',
-      name: 'Elias',
-      image: brotherImage,
-      description: 'The Rizzler',
-      terminalName: 'OMNIA_02'
-    },
-    {
-      id: 'lyra',
-      name: 'Lyra',
-      image: sisterImage,
-      description: 'The Love Oracle',
-      terminalName: 'OMNIA_03'
+      id: 'edgar',
+      name: 'Edgar',
+      image: edgarImage,
+      description: 'AI Companion',
+      terminalName: 'EDGAR_01'
     }
   ];
 
@@ -63,10 +47,10 @@ const SideDock: React.FC<SideDockProps> = ({ onCharacterClick }) => {
       <div
         className="relative font-mono"
         style={{
-          background: 'rgba(0,10,0,0.9)',
-          border: '2px solid rgba(0,255,0,0.4)',
+          background: 'rgba(5,5,15,0.9)',
+          border: '2px solid rgba(0,255,255,0.3)',
           padding: '12px',
-          boxShadow: '0 0 20px rgba(0,255,0,0.15), inset 0 0 30px rgba(0,255,0,0.05)'
+          boxShadow: '0 0 15px rgba(0,255,255,0.08), inset 0 0 30px rgba(0,255,255,0.03)'
         }}
       >
         {/* Scanlines overlay */}
@@ -74,16 +58,16 @@ const SideDock: React.FC<SideDockProps> = ({ onCharacterClick }) => {
           className="absolute inset-0 pointer-events-none"
           style={{
             background: 'repeating-linear-gradient(0deg, transparent 0px, transparent 2px, rgba(0,0,0,0.2) 2px, rgba(0,0,0,0.2) 4px)',
-            opacity: 0.5
+            opacity: 0.4
           }}
         />
 
         {/* Header */}
         <div
-          className="text-ed-green-500/80 text-[10px] tracking-wider mb-3 pb-2 border-b border-ed-green-500/30"
-          style={{ textShadow: '0 0 5px rgba(0,255,0,0.5)' }}
+          className="text-ed-cyan-500/80 text-[10px] tracking-wider mb-3 pb-2 border-b border-ed-cyan-500/30"
+          style={{ textShadow: '0 0 5px rgba(0,255,255,0.4)' }}
         >
-          ┌─ AI UNITS ─┐
+          ┌── EDGAR ──┐
         </div>
 
         {/* Characters */}
@@ -104,12 +88,12 @@ const SideDock: React.FC<SideDockProps> = ({ onCharacterClick }) => {
                   ${hoveredCharacter === character.id ? 'scale-110' : 'scale-100'}
                 `}
                 style={{
-                  border: `2px solid ${hoveredCharacter === character.id ? 'rgba(0,255,0,0.8)' : 'rgba(0,255,0,0.4)'}`,
+                  border: `2px solid ${hoveredCharacter === character.id ? 'rgba(0,255,255,0.7)' : 'rgba(0,255,255,0.3)'}`,
                   borderRadius: '50%',
-                  background: 'rgba(0,20,0,0.8)',
+                  background: 'rgba(5,5,20,0.8)',
                   boxShadow: hoveredCharacter === character.id
-                    ? '0 0 15px rgba(0,255,0,0.5), inset 0 0 10px rgba(0,255,0,0.2)'
-                    : '0 0 5px rgba(0,255,0,0.2), inset 0 0 5px rgba(0,255,0,0.1)'
+                    ? '0 0 12px rgba(0,255,255,0.35), inset 0 0 10px rgba(0,255,255,0.1)'
+                    : '0 0 5px rgba(0,255,255,0.15), inset 0 0 5px rgba(0,255,255,0.05)'
                 }}
               >
                 {/* Character image with CRT tint */}
@@ -125,11 +109,11 @@ const SideDock: React.FC<SideDockProps> = ({ onCharacterClick }) => {
                   }}
                 />
 
-                {/* Green phosphor overlay */}
+                {/* Subtle CRT overlay */}
                 <div
                   className="absolute inset-0 pointer-events-none"
                   style={{
-                    background: 'radial-gradient(circle at center, transparent 30%, rgba(0,50,0,0.3) 100%)'
+                    background: 'radial-gradient(circle at center, transparent 30%, rgba(0,20,30,0.3) 100%)'
                   }}
                 />
 
@@ -164,22 +148,22 @@ const SideDock: React.FC<SideDockProps> = ({ onCharacterClick }) => {
                   <div
                     className="font-mono text-xs px-3 py-2"
                     style={{
-                      background: 'rgba(0,10,0,0.95)',
-                      border: '1px solid rgba(0,255,0,0.5)',
-                      boxShadow: '0 0 10px rgba(0,255,0,0.3)'
+                      background: 'rgba(5,5,15,0.95)',
+                      border: '1px solid rgba(0,255,255,0.4)',
+                      boxShadow: '0 0 10px rgba(0,255,255,0.2)'
                     }}
                   >
                     <div
-                      className="text-ed-green-400 font-bold"
-                      style={{ textShadow: '0 0 5px rgba(0,255,0,0.8)' }}
+                      className="text-ed-cyan-400 font-bold"
+                      style={{ textShadow: '0 0 5px rgba(0,255,255,0.6)' }}
                     >
                       {character.terminalName}
                     </div>
-                    <div className="text-ed-green-500/70 text-[10px]">{character.name}</div>
-                    <div className="text-ed-green-600/50 text-[9px] mt-1">
+                    <div className="text-ed-cyan-500/70 text-[10px]">{character.name}</div>
+                    <div className="text-gray-500 text-[9px] mt-1">
                       [{character.description}]
                     </div>
-                    <div className="text-ed-green-500/40 text-[8px] mt-1">
+                    <div className="text-ed-cyan-500/40 text-[8px] mt-1">
                       STATUS: ONLINE
                     </div>
                   </div>
@@ -191,10 +175,10 @@ const SideDock: React.FC<SideDockProps> = ({ onCharacterClick }) => {
                 <div
                   className="absolute -right-1 -top-1 w-4 h-4 flex items-center justify-center text-[8px] font-bold"
                   style={{
-                    background: 'rgba(0,40,0,0.9)',
-                    border: '1px solid rgba(0,255,0,0.4)',
-                    color: 'rgba(0,255,0,0.8)',
-                    textShadow: '0 0 3px rgba(0,255,0,0.5)'
+                    background: 'rgba(5,15,20,0.9)',
+                    border: '1px solid rgba(0,255,255,0.35)',
+                    color: 'rgba(0,255,255,0.7)',
+                    textShadow: '0 0 3px rgba(0,255,255,0.4)'
                   }}
                 >
                   {index + 1}
@@ -206,16 +190,16 @@ const SideDock: React.FC<SideDockProps> = ({ onCharacterClick }) => {
 
         {/* Footer */}
         <div
-          className="text-ed-green-500/60 text-[9px] tracking-wider mt-3 pt-2 border-t border-ed-green-500/30 text-center"
-          style={{ textShadow: '0 0 3px rgba(0,255,0,0.3)' }}
+          className="text-ed-cyan-500/50 text-[9px] tracking-wider mt-3 pt-2 border-t border-ed-cyan-500/30 text-center"
+          style={{ textShadow: '0 0 3px rgba(0,255,255,0.2)' }}
         >
-          AI Companions
+          AI Companion
         </div>
         <div
-          className="text-ed-green-700/40 text-[8px] tracking-wider text-center"
-          style={{ textShadow: '0 0 2px rgba(0,255,0,0.2)' }}
+          className="text-ed-cyan-700/40 text-[8px] tracking-wider text-center"
+          style={{ textShadow: '0 0 2px rgba(0,255,255,0.15)' }}
         >
-          └───────────┘
+          └──────────┘
         </div>
       </div>
 

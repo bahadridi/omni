@@ -38,32 +38,38 @@ const OmniaOS: React.FC = () => {
     return () => window.removeEventListener('mousemove', handleMouseMove);
   }, []);
 
-  // Render background particles - Green phosphor dots like old CRT
-  const renderParticles = useMemo(() => (
-    <div className="fixed inset-0 pointer-events-none ed-scanlines">
-      {Array.from({ length: 30 }).map((_, i) => {
-        const size = Math.random() * 2 + 1;
-        const animationDuration = Math.random() * 15 + 10;
-        return (
-          <div
-            key={i}
-            className="absolute bg-ed-green-500/20 rounded-full animate-float"
-            style={{
-              width: `${size}px`,
-              height: `${size}px`,
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-              animationDuration: `${animationDuration}s`,
-              animationDelay: `${Math.random() * -20}s`,
-              boxShadow: '0 0 4px #00FF00'
-            }}
-          />
-        );
-      })}
-    </div>
-  ), []);
+  // Render background particles - Mixed phosphor dots
+  const renderParticles = useMemo(() => {
+    const colors = ['rgba(0,255,0,0.15)', 'rgba(255,176,0,0.12)', 'rgba(0,255,255,0.1)'];
+    const glows = ['0 0 3px #00FF00', '0 0 3px #FFB000', '0 0 3px #00FFFF'];
+    return (
+      <div className="fixed inset-0 pointer-events-none ed-scanlines">
+        {Array.from({ length: 20 }).map((_, i) => {
+          const size = Math.random() * 2 + 1;
+          const animationDuration = Math.random() * 15 + 10;
+          const colorIdx = i % 3;
+          return (
+            <div
+              key={i}
+              className="absolute rounded-full animate-float"
+              style={{
+                width: `${size}px`,
+                height: `${size}px`,
+                left: `${Math.random() * 100}%`,
+                top: `${Math.random() * 100}%`,
+                animationDuration: `${animationDuration}s`,
+                animationDelay: `${Math.random() * -20}s`,
+                background: colors[colorIdx],
+                boxShadow: glows[colorIdx]
+              }}
+            />
+          );
+        })}
+      </div>
+    );
+  }, []);
 
-  // Render dynamic background - 1984 Green CRT Terminal
+  // Render dynamic background - 1984 CRT Terminal
   const renderBackground = useCallback(() => (
     <div
       className="fixed inset-0 transition-all duration-1000 ease-out ed-crt-screen"
@@ -71,13 +77,13 @@ const OmniaOS: React.FC = () => {
         background: `
           radial-gradient(
             circle at ${mousePosition.x}px ${mousePosition.y}px,
-            rgba(0, 255, 0, 0.08) 0%,
-            rgba(0, 128, 0, 0.04) 25%,
+            rgba(0, 255, 0, 0.04) 0%,
+            rgba(0, 80, 40, 0.02) 25%,
             transparent 50%
           ),
           radial-gradient(
             ellipse at center,
-            rgba(0, 8, 0, 1) 0%,
+            rgba(2, 4, 6, 1) 0%,
             rgba(0, 0, 0, 1) 100%
           )
         `
@@ -91,14 +97,14 @@ const OmniaOS: React.FC = () => {
       <div className="text-center ed-phosphor">
         <div className="relative mb-8">
           <h1
-            className={`text-6xl md:text-8xl font-terminal text-ed-green-500
+            className={`text-6xl md:text-8xl font-terminal text-ed-amber-400
               animate-pulse tracking-wider transition-all duration-1000
               ${bootPhase >= 2 ? 'scale-110' : 'scale-90 opacity-50'}`}
-            style={{ textShadow: '0 0 10px #00FF00, 0 0 20px #00FF00, 0 0 40px #00CC00' }}
+            style={{ textShadow: '0 0 10px #FFB000, 0 0 20px #FFB000, 0 0 40px #CC8800' }}
           >
-            OMNIA OS
+            EDGAR OS
           </h1>
-          <div className="mt-4 text-ed-green-400 text-lg font-terminal ed-typing-text">
+          <div className="mt-4 text-ed-green-400/80 text-lg font-terminal ed-typing-text">
             {bootPhase >= 1 && <div className="ed-typewriter">&gt; INITIALIZING CORE SYSTEMS...</div>}
             {bootPhase >= 2 && <div className="mt-2 ed-typewriter">&gt; LOADING NEURAL INTERFACE...</div>}
             {bootPhase >= 3 && <div className="mt-2 ed-typewriter">&gt; AWAKENING CONSCIOUSNESS...</div>}
@@ -116,7 +122,7 @@ const OmniaOS: React.FC = () => {
             />
           ))}
         </div>
-        <div className="mt-8 text-ed-green-600 text-sm font-terminal">
+        <div className="mt-8 text-ed-amber-600 text-sm font-terminal">
           {bootPhase >= 1 && "[ ELECTRIC DREAMS SYSTEMS v1.984 ]"}
         </div>
       </div>

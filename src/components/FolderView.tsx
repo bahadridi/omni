@@ -1393,16 +1393,16 @@ Thank you for being part of our mission to help people build better relationship
     // Mobile Layout - Fully Responsive Modal
     return (
       <div className="fixed inset-0 bg-black/90 backdrop-blur-xl z-50 flex items-center justify-center p-2">
-        <div className="bg-gradient-to-br from-gray-900/95 to-black/95 rounded-2xl w-[96%] max-w-2xl max-h-[95vh] border border-ed-green-500/30 shadow-2xl backdrop-blur-xl overflow-hidden flex flex-col mobile-folder-wrapper">
+        <div className="bg-gradient-to-br from-gray-900/95 to-black/95 rounded-2xl w-[96%] max-w-2xl max-h-[95vh] border border-ed-amber-500/25 shadow-2xl backdrop-blur-xl overflow-hidden flex flex-col mobile-folder-wrapper">
           {/* Mobile Header - Fixed height */}
-                      <div className="flex items-center justify-between p-3 border-b border-ed-green-500/30 bg-gray-900/50 h-13 flex-shrink-0">
+                      <div className="flex items-center justify-between p-3 border-b border-ed-amber-500/25 bg-gray-900/50 h-13 flex-shrink-0">
             <h2 className="text-base font-semibold text-white flex items-center truncate">
-                              <Folder className="w-4 h-4 text-ed-green-400 mr-2 flex-shrink-0" />
+                              <Folder className="w-4 h-4 text-ed-amber-400 mr-2 flex-shrink-0" />
               <span className="truncate text-sm">{folderId.charAt(0).toUpperCase() + folderId.slice(1)}</span>
             </h2>
             <button
               onClick={handleClose}
-                              className="flex items-center justify-center w-8 h-8 bg-ed-green-500/20 hover:bg-ed-green-500/30 text-ed-green-400 hover:text-ed-green-300 rounded-full border border-ed-green-500/30 transition-all duration-300 active:scale-95 flex-shrink-0"
+                              className="flex items-center justify-center w-8 h-8 bg-ed-amber-500/20 hover:bg-ed-amber-500/30 text-ed-amber-400 hover:text-ed-amber-300 rounded-full border border-ed-amber-500/30 transition-all duration-300 active:scale-95 flex-shrink-0"
             >
               <X className="w-4 h-4" />
             </button>
@@ -1441,7 +1441,7 @@ Thank you for being part of our mission to help people build better relationship
                 <div className="p-2.5 border-b border-gray-700/50 bg-gray-900/30 flex-shrink-0">
                   <button
                     onClick={() => setActiveFile(null)}
-                    className="flex items-center text-ed-green-400 hover:text-ed-green-300 bg-ed-green-500/10 hover:bg-ed-green-500/20 px-2.5 py-1.5 rounded-md transition-all duration-200 min-h-[36px]"
+                    className="flex items-center text-ed-amber-400 hover:text-ed-amber-300 bg-ed-amber-500/10 hover:bg-ed-amber-500/20 px-2.5 py-1.5 rounded-md transition-all duration-200 min-h-[36px]"
                   >
                     <ChevronRight className="w-3.5 h-3.5 rotate-180 mr-1.5 flex-shrink-0" />
                     <span className="text-xs truncate">Back to {folderId.charAt(0).toUpperCase() + folderId.slice(1)}</span>
@@ -1497,30 +1497,30 @@ Thank you for being part of our mission to help people build better relationship
       <div
         className="relative max-w-6xl w-full h-[80vh] overflow-hidden"
         style={{
-          background: 'rgba(0,10,0,0.95)',
-          border: '2px solid rgba(0,255,0,0.5)',
-          boxShadow: '0 0 30px rgba(0,255,0,0.2), inset 0 0 50px rgba(0,255,0,0.05)',
+          background: 'rgba(5,5,10,0.95)',
+          border: '2px solid rgba(255,176,0,0.35)',
+          boxShadow: '0 0 25px rgba(255,176,0,0.1), inset 0 0 50px rgba(0,0,0,0.3)',
           borderRadius: '4px'
         }}
       >
         {/* Terminal Header Bar */}
         <div
-          className="flex items-center justify-between px-4 py-2 border-b border-ed-green-500/40"
-          style={{ background: 'rgba(0,30,0,0.8)' }}
+          className="flex items-center justify-between px-4 py-2 border-b border-ed-amber-500/30"
+          style={{ background: 'rgba(20,15,0,0.6)' }}
         >
           <div className="flex items-center">
-            <Folder className="w-5 h-5 text-ed-green-400 mr-3" style={{ filter: 'drop-shadow(0 0 3px rgba(0,255,0,0.5))' }} />
+            <Folder className="w-5 h-5 text-ed-amber-400 mr-3" style={{ filter: 'drop-shadow(0 0 3px rgba(255,176,0,0.4))' }} />
             <span
-              className="text-ed-green-400 text-sm tracking-wider"
-              style={{ textShadow: '0 0 5px rgba(0,255,0,0.5)' }}
+              className="text-ed-amber-400 text-sm tracking-wider"
+              style={{ textShadow: '0 0 5px rgba(255,176,0,0.4)' }}
             >
               /{folderId.toUpperCase()}/
             </span>
           </div>
           <button
             onClick={handleClose}
-            className="text-ed-green-500 hover:text-ed-green-300 transition-colors p-1"
-            style={{ textShadow: '0 0 5px rgba(0,255,0,0.5)' }}
+            className="text-ed-amber-500 hover:text-ed-amber-300 transition-colors p-1"
+            style={{ textShadow: '0 0 5px rgba(255,176,0,0.4)' }}
           >
             <X className="w-5 h-5" />
           </button>
@@ -1529,10 +1529,10 @@ Thank you for being part of our mission to help people build better relationship
         <div className="flex h-[calc(100%-3rem)]">
           {/* File List - Terminal Directory Style */}
           <div
-            className="w-1/3 overflow-y-auto p-4 border-r border-ed-green-500/30"
-            style={{ background: 'rgba(0,5,0,0.5)' }}
+            className="w-1/3 overflow-y-auto p-4 border-r border-ed-amber-500/20"
+            style={{ background: 'rgba(5,5,5,0.5)' }}
           >
-            <div className="text-ed-green-600/70 text-xs mb-3" style={{ textShadow: '0 0 3px rgba(0,255,0,0.3)' }}>
+            <div className="text-ed-amber-600/70 text-xs mb-3" style={{ textShadow: '0 0 3px rgba(255,176,0,0.2)' }}>
               ┌─ DIRECTORY LISTING ─┐
             </div>
             {folderContents[folderId]?.map((item, index) => (
@@ -1542,30 +1542,30 @@ Thank you for being part of our mission to help people build better relationship
                 className={`
                   flex items-center space-x-3 p-3 mb-2 cursor-pointer transition-all duration-200
                   ${activeFile === item.id
-                    ? 'bg-ed-green-500/20 border-l-2 border-ed-green-400'
-                    : 'hover:bg-ed-green-500/10 border-l-2 border-transparent'
+                    ? 'bg-ed-amber-500/15 border-l-2 border-ed-amber-400'
+                    : 'hover:bg-ed-amber-500/8 border-l-2 border-transparent'
                   }
                 `}
                 style={{
-                  boxShadow: activeFile === item.id ? '0 0 10px rgba(0,255,0,0.2)' : 'none'
+                  boxShadow: activeFile === item.id ? '0 0 10px rgba(255,176,0,0.1)' : 'none'
                 }}
               >
-                <span className="text-ed-green-600 text-xs">{String(index + 1).padStart(2, '0')}</span>
-                <div className="text-ed-green-400" style={{ filter: 'drop-shadow(0 0 2px rgba(0,255,0,0.3))' }}>
+                <span className="text-ed-amber-600 text-xs">{String(index + 1).padStart(2, '0')}</span>
+                <div className="text-ed-amber-400" style={{ filter: 'drop-shadow(0 0 2px rgba(255,176,0,0.25))' }}>
                   {React.cloneElement(item.icon as React.ReactElement, { className: "w-5 h-5" })}
                 </div>
                 <div className="flex-1 min-w-0">
                   <div
-                    className="text-ed-green-300 text-sm truncate"
-                    style={{ textShadow: '0 0 5px rgba(0,255,0,0.4)' }}
+                    className="text-ed-amber-300 text-sm truncate"
+                    style={{ textShadow: '0 0 5px rgba(255,176,0,0.3)' }}
                   >
                     {item.name}
                   </div>
-                  <div className="text-ed-green-700 text-xs truncate">{item.description}</div>
+                  <div className="text-gray-600 text-xs truncate">{item.description}</div>
                 </div>
               </div>
             ))}
-            <div className="text-ed-green-600/70 text-xs mt-3" style={{ textShadow: '0 0 3px rgba(0,255,0,0.3)' }}>
+            <div className="text-ed-amber-600/70 text-xs mt-3" style={{ textShadow: '0 0 3px rgba(255,176,0,0.2)' }}>
               └─────────────────────┘
             </div>
           </div>
@@ -1573,7 +1573,7 @@ Thank you for being part of our mission to help people build better relationship
           {/* Content View - Terminal Output Style */}
           <div
             className="flex-1 overflow-y-auto p-6"
-            style={{ background: 'rgba(0,8,0,0.3)' }}
+            style={{ background: 'rgba(3,3,5,0.3)' }}
           >
             {activeFile ? (
               <>
@@ -1586,8 +1586,8 @@ Thank you for being part of our mission to help people build better relationship
                     </div>
                   ) : (
                     <div
-                      className="prose prose-invert max-w-none prose-headings:text-ed-green-400 prose-p:text-ed-green-300/90 prose-a:text-ed-cyan-400 prose-strong:text-ed-green-300 prose-code:text-ed-amber-400 prose-pre:bg-black/50 prose-pre:border prose-pre:border-ed-green-500/30"
-                      style={{ textShadow: '0 0 2px rgba(0,255,0,0.2)' }}
+                      className="prose prose-invert max-w-none prose-headings:text-ed-amber-400 prose-p:text-gray-300/90 prose-a:text-ed-cyan-400 prose-strong:text-ed-amber-300 prose-code:text-ed-green-400 prose-pre:bg-black/50 prose-pre:border prose-pre:border-ed-amber-500/20"
+                      style={{ textShadow: '0 0 1px rgba(255,176,0,0.1)' }}
                     >
                       <ReactMarkdown>{fileContent}</ReactMarkdown>
                     </div>
@@ -1596,10 +1596,10 @@ Thank you for being part of our mission to help people build better relationship
               </>
             ) : (
               <div className="text-center mt-20">
-                <div className="text-ed-green-500/60 text-sm" style={{ textShadow: '0 0 5px rgba(0,255,0,0.3)' }}>
+                <div className="text-ed-amber-500/60 text-sm" style={{ textShadow: '0 0 5px rgba(255,176,0,0.2)' }}>
                   &gt; SELECT FILE TO VIEW CONTENTS_
                 </div>
-                <div className="text-ed-green-700/40 text-xs mt-2">
+                <div className="text-gray-600 text-xs mt-2">
                   Use directory listing to navigate
                 </div>
               </div>

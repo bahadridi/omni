@@ -1,7 +1,7 @@
 /* ============================================
    ELECTRIC DREAMS (1984) DESIGN SYSTEM
    Authentic 80s AI Computer Aesthetic
-   Inspired by Omnia the sentient AI
+   Inspired by Edgar the sentient PC
    ============================================ */
 
 /* Google Fonts Import */
@@ -315,7 +315,7 @@ body {
 }
 
 /* ============================================
-   OMNIA AI AWAKENING ANIMATIONS
+   EDGAR AI AWAKENING ANIMATIONS
    ============================================ */
 
 /* Boot sequence text */
@@ -381,7 +381,7 @@ body {
   }
 }
 
-/* Omnia thinking dots */
+/* Edgar thinking dots */
 .ed-thinking::after {
   content: '';
   animation: ed-think-dots 1.5s steps(1) infinite;
@@ -431,7 +431,7 @@ body {
 }
 
 .ed-data-scroll::after {
-  content: '>>> PROCESSING DATA STREAM >>> OMNIA NEURAL CORE ACTIVE >>> MEMORY ALLOCATION COMPLETE >>>';
+  content: '>>> PROCESSING DATA STREAM >>> EDGAR NEURAL CORE ACTIVE >>> MEMORY ALLOCATION COMPLETE >>>';
   position: absolute;
   white-space: nowrap;
   color: var(--ed-green-700);
@@ -574,7 +574,7 @@ body {
 }
 
 .ed-prompt::before {
-  content: 'OMNIA://> ';
+  content: 'EDGAR://> ';
   color: var(--ed-amber-500);
   text-shadow: 0 0 10px var(--ed-amber-500);
 }

@@ -464,14 +464,8 @@ const Desktop: React.FC = () => {
 
   const handleCharacterClick = (characterId: string) => {
     switch (characterId) {
-      case 'samantha':
-        handleWindowOpen('ai-companion-samantha');
-        break;
-      case 'elias':
-        handleWindowOpen('ai-companion-elias');
-        break;
-      case 'lyra':
-        handleWindowOpen('ai-companion-lyra');
+      case 'edgar':
+        handleWindowOpen('ai-companion-edgar');
         break;
       default:
         break;
@@ -496,7 +490,7 @@ const Desktop: React.FC = () => {
                 font-light text-gray-200 tracking-[0.3em]
                 ${isMobile ? 'text-lg' : 'text-2xl'}
               `}>
-                {isMobile ? 'OMNIA' : 'OMNIAOS'}
+                {isMobile ? 'EDGAR' : 'EDGAR'}
               </div>
             </div>
             
@@ -746,7 +740,7 @@ const Desktop: React.FC = () => {
       <div
         className="fixed left-0 right-0 h-[2px] z-[101] pointer-events-none"
         style={{
-          background: 'linear-gradient(to bottom, transparent, rgba(0, 255, 0, 0.15), rgba(0, 255, 0, 0.3), rgba(0, 255, 0, 0.15), transparent)',
+          background: 'linear-gradient(to bottom, transparent, rgba(200, 220, 255, 0.06), rgba(200, 220, 255, 0.12), rgba(200, 220, 255, 0.06), transparent)',
           animation: 'scanline-beam 8s linear infinite'
         }}
       />
@@ -767,13 +761,13 @@ const Desktop: React.FC = () => {
         }}
       />
 
-      {/* Phosphor Screen Glow */}
+      {/* Phosphor Screen Glow - Subtle */}
       <div
         className="fixed inset-0 z-[1] pointer-events-none"
         style={{
           background: `
             radial-gradient(ellipse 80% 60% at 50% 50%,
-              rgba(0, 255, 0, 0.03) 0%,
+              rgba(0, 255, 0, 0.015) 0%,
               transparent 70%
             )
           `
@@ -781,62 +775,62 @@ const Desktop: React.FC = () => {
       />
 
       {/* ══════════════════════════════════════════════════════
-          OMNIA TERMINAL CLOCK - CRT Style with Blinking Cursor
+          EDGAR TERMINAL CLOCK - CRT Style with Blinking Cursor
           ══════════════════════════════════════════════════════ */}
       {!isMobile && (
         <div className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10">
           <div className="relative group">
             {/* Phosphor glow behind terminal */}
             <div
-              className="absolute -inset-4 rounded-lg blur-xl opacity-50 group-hover:opacity-70 transition-opacity duration-500"
+              className="absolute -inset-4 rounded-lg blur-xl opacity-40 group-hover:opacity-60 transition-opacity duration-500"
               style={{
-                background: 'radial-gradient(circle, rgba(0,255,0,0.3) 0%, transparent 70%)'
+                background: 'radial-gradient(circle, rgba(255,176,0,0.25) 0%, transparent 70%)'
               }}
             />
 
-            {/* CRT Monitor Frame */}
+            {/* CRT Monitor Frame - Amber Phosphor */}
             <div
-              className="relative bg-black border-2 border-ed-green-500/60 p-8 group-hover:border-ed-green-400 transition-all duration-300"
+              className="relative bg-black border-2 border-ed-amber-500/50 p-8 group-hover:border-ed-amber-400 transition-all duration-300"
               style={{
                 borderRadius: '8px',
                 boxShadow: `
-                  0 0 20px rgba(0,255,0,0.2),
-                  inset 0 0 60px rgba(0,255,0,0.05),
-                  0 0 2px rgba(0,255,0,0.8)
+                  0 0 20px rgba(255,176,0,0.15),
+                  inset 0 0 60px rgba(255,176,0,0.03),
+                  0 0 2px rgba(255,176,0,0.6)
                 `
               }}
             >
               {/* Terminal Header */}
-              <div className="text-ed-green-500/60 text-xs font-mono mb-4 tracking-widest border-b border-ed-green-500/30 pb-2">
-                ┌─── OMNIA OS v1.984 ───────────────────┐
+              <div className="text-ed-amber-500/60 text-xs font-mono mb-4 tracking-widest border-b border-ed-amber-500/30 pb-2">
+                ┌─── EDGAR OS v1.984 ───────────────────┐
               </div>
 
               {/* Time Display - Large Monospace */}
               <div
-                className="text-6xl font-mono text-ed-green-400 tabular-nums tracking-wider text-center"
+                className="text-6xl font-mono text-ed-amber-400 tabular-nums tracking-wider text-center"
                 style={{
-                  textShadow: '0 0 10px #00FF00, 0 0 20px #00FF00, 0 0 30px #00CC00'
+                  textShadow: '0 0 10px #FFB000, 0 0 20px #FFB000, 0 0 30px #CC8800'
                 }}
               >
                 {currentTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' })}
               </div>
 
               {/* Date Display */}
-              <div className="text-center text-ed-green-500/80 mt-4 font-mono text-sm tracking-[0.3em]">
+              <div className="text-center text-ed-amber-500/80 mt-4 font-mono text-sm tracking-[0.3em]">
                 {currentTime.toLocaleDateString([], { weekday: 'long', month: 'long', day: 'numeric' }).toUpperCase()}
               </div>
 
               {/* Blinking Cursor Line */}
-              <div className="mt-4 font-mono text-ed-green-400 text-sm flex items-center justify-center">
-                <span className="text-ed-green-500/60">&gt; SYSTEM_TIME.SYNC</span>
+              <div className="mt-4 font-mono text-ed-amber-400 text-sm flex items-center justify-center">
+                <span className="text-ed-amber-500/60">&gt; SYSTEM_TIME.SYNC</span>
                 <span
-                  className="ml-1 inline-block w-2 h-4 bg-ed-green-400"
+                  className="ml-1 inline-block w-2 h-4 bg-ed-amber-400"
                   style={{ animation: 'blink-cursor 1s step-end infinite' }}
                 />
               </div>
 
               {/* Terminal Footer */}
-              <div className="text-ed-green-500/40 text-xs font-mono mt-4 tracking-widest border-t border-ed-green-500/30 pt-2">
+              <div className="text-ed-amber-500/40 text-xs font-mono mt-4 tracking-widest border-t border-ed-amber-500/30 pt-2">
                 └───────────────────────────────────────┘
               </div>
             </div>
@@ -850,14 +844,14 @@ const Desktop: React.FC = () => {
       {!isMobile && (
         <div className="fixed bottom-24 right-8 z-10">
           <div
-            className="bg-black border border-ed-green-500/50 p-4 font-mono text-sm"
+            className="bg-black border border-ed-cyan-500/40 p-4 font-mono text-sm"
             style={{
-              boxShadow: '0 0 15px rgba(0,255,0,0.15), inset 0 0 30px rgba(0,255,0,0.03)',
+              boxShadow: '0 0 15px rgba(0,255,255,0.1), inset 0 0 30px rgba(0,255,255,0.02)',
               minWidth: '320px'
             }}
           >
             {/* Header */}
-            <div className="text-ed-green-400 border-b border-ed-green-500/30 pb-2 mb-3">
+            <div className="text-ed-cyan-400 border-b border-ed-cyan-500/30 pb-2 mb-3">
               ╔══════════ SYSTEM DIAGNOSTICS ══════════╗
             </div>
 
@@ -872,25 +866,25 @@ const Desktop: React.FC = () => {
                 const filled = Math.floor(value / 5);
                 const empty = 20 - filled;
                 return (
-                  <div key={label} className="flex items-center text-ed-green-400">
-                    <span className="w-8 text-ed-green-500/70">{label}:</span>
-                    <span className="text-ed-green-500/50 mx-1">[</span>
-                    <span className="text-ed-green-400" style={{ textShadow: '0 0 5px #00FF00' }}>
+                  <div key={label} className="flex items-center text-ed-cyan-400">
+                    <span className="w-8 text-ed-cyan-500/70">{label}:</span>
+                    <span className="text-ed-cyan-500/50 mx-1">[</span>
+                    <span className="text-ed-cyan-400" style={{ textShadow: '0 0 5px #00FFFF' }}>
                       {'█'.repeat(filled)}
                     </span>
-                    <span className="text-ed-green-900">{'░'.repeat(empty)}</span>
-                    <span className="text-ed-green-500/50 mx-1">]</span>
-                    <span className="w-12 text-right text-ed-green-300">{value}%</span>
+                    <span className="text-ed-cyan-900">{'░'.repeat(empty)}</span>
+                    <span className="text-ed-cyan-500/50 mx-1">]</span>
+                    <span className="w-12 text-right text-ed-cyan-300">{value}%</span>
                   </div>
                 );
               })}
             </div>
 
             {/* Footer with blinking status */}
-            <div className="text-ed-green-500/50 border-t border-ed-green-500/30 pt-2 mt-3 flex justify-between">
+            <div className="text-ed-cyan-500/50 border-t border-ed-cyan-500/30 pt-2 mt-3 flex justify-between">
               <span>╚═══════════════════════════════════════╝</span>
             </div>
-            <div className="text-xs text-ed-green-500/40 mt-2 flex items-center">
+            <div className="text-xs text-ed-cyan-500/40 mt-2 flex items-center">
               <span
                 className="w-2 h-2 bg-ed-green-400 rounded-full mr-2"
                 style={{ animation: 'blink-cursor 1.5s ease-in-out infinite' }}
@@ -933,18 +927,20 @@ const Desktop: React.FC = () => {
                 <div
                   className="relative w-20 h-20 flex items-center justify-center mb-3 transition-all duration-300"
                   style={{
-                    background: 'linear-gradient(135deg, rgba(0,40,0,0.9) 0%, rgba(0,20,0,0.95) 100%)',
+                    background: folder.id === 'samantha'
+                      ? 'linear-gradient(135deg, rgba(0,40,0,0.9) 0%, rgba(0,20,0,0.95) 100%)'
+                      : 'linear-gradient(135deg, rgba(10,10,20,0.9) 0%, rgba(5,5,15,0.95) 100%)',
                     border: '2px solid',
-                    borderColor: folder.id === 'samantha' ? '#00FF00' : 'rgba(0,255,0,0.4)',
+                    borderColor: folder.id === 'samantha' ? '#00FF00' : 'rgba(255,176,0,0.35)',
                     borderRadius: '8px',
                     boxShadow: folder.id === 'samantha'
-                      ? '0 0 20px rgba(0,255,0,0.5), inset 0 0 20px rgba(0,255,0,0.1)'
-                      : '0 0 10px rgba(0,255,0,0.2), inset 0 0 15px rgba(0,255,0,0.05)'
+                      ? '0 0 20px rgba(0,255,0,0.4), inset 0 0 20px rgba(0,255,0,0.08)'
+                      : '0 0 8px rgba(255,176,0,0.1), inset 0 0 15px rgba(255,176,0,0.03)'
                   }}
                 >
                   {/* Scanline overlay on icon */}
                   <div
-                    className="absolute inset-0 pointer-events-none opacity-30"
+                    className="absolute inset-0 pointer-events-none opacity-20"
                     style={{
                       background: 'repeating-linear-gradient(0deg, transparent 0px, transparent 2px, rgba(0,0,0,0.3) 2px, rgba(0,0,0,0.3) 4px)',
                       borderRadius: '6px'
@@ -955,12 +951,14 @@ const Desktop: React.FC = () => {
                   <div
                     className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
                     style={{
-                      background: 'radial-gradient(circle at center, rgba(0,255,0,0.2) 0%, transparent 70%)',
+                      background: folder.id === 'samantha'
+                        ? 'radial-gradient(circle at center, rgba(0,255,0,0.15) 0%, transparent 70%)'
+                        : 'radial-gradient(circle at center, rgba(255,176,0,0.12) 0%, transparent 70%)',
                       borderRadius: '6px'
                     }}
                   />
 
-                  {/* Special glow for Omnia/Samantha */}
+                  {/* Special glow for Edgar/Samantha */}
                   {folder.id === 'samantha' && (
                     <div
                       className="absolute -inset-1"
@@ -973,11 +971,13 @@ const Desktop: React.FC = () => {
                     />
                   )}
 
-                  {/* Icon with green glow */}
+                  {/* Icon with subtle glow */}
                   <div
-                    className="relative z-10 text-ed-green-400 transition-all duration-300 group-hover:text-ed-green-300"
+                    className={`relative z-10 transition-all duration-300 ${folder.id === 'samantha' ? 'text-ed-green-400 group-hover:text-ed-green-300' : 'text-ed-amber-400 group-hover:text-ed-amber-300'}`}
                     style={{
-                      filter: 'drop-shadow(0 0 4px rgba(0,255,0,0.6))',
+                      filter: folder.id === 'samantha'
+                        ? 'drop-shadow(0 0 3px rgba(0,255,0,0.4))'
+                        : 'drop-shadow(0 0 3px rgba(255,176,0,0.4))',
                       transform: 'scale(1)',
                       transition: 'all 0.3s ease'
                     }}
@@ -987,27 +987,31 @@ const Desktop: React.FC = () => {
                     </div>
                   </div>
                 </div>
-                
+
                 {/* Terminal-style label */}
                 <div className="text-center mt-2">
                   <div
-                    className="text-ed-green-400 text-xs font-mono tracking-wider group-hover:text-ed-green-300 transition-colors duration-300"
+                    className={`text-xs font-mono tracking-wider transition-colors duration-300 ${folder.id === 'samantha' ? 'text-ed-green-400 group-hover:text-ed-green-300' : 'text-ed-amber-400/80 group-hover:text-ed-amber-300'}`}
                     style={{
-                      textShadow: '0 0 5px rgba(0,255,0,0.5)'
+                      textShadow: folder.id === 'samantha'
+                        ? '0 0 5px rgba(0,255,0,0.4)'
+                        : '0 0 5px rgba(255,176,0,0.3)'
                     }}
                   >
                     {folder.name.toUpperCase()}
                   </div>
-                  <div className="text-ed-green-700 text-[10px] font-mono mt-1 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <div className="text-gray-600 text-[10px] font-mono mt-1 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                     [{folder.description}]
                   </div>
                 </div>
 
-                {/* Green phosphor glow on hover */}
+                {/* Subtle phosphor glow on hover */}
                 <div
                   className="absolute -inset-4 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
                   style={{
-                    background: 'radial-gradient(circle at center, rgba(0,255,0,0.2) 0%, transparent 70%)',
+                    background: folder.id === 'samantha'
+                      ? 'radial-gradient(circle at center, rgba(0,255,0,0.15) 0%, transparent 70%)'
+                      : 'radial-gradient(circle at center, rgba(255,176,0,0.1) 0%, transparent 70%)',
                     filter: 'blur(10px)'
                   }}
                 />

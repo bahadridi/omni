@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import edgarLogo from '../assets/edgar.png';
 
 interface PreIntroLoaderProps {
   onComplete: () => void;
@@ -27,7 +28,7 @@ const PreIntroLoader: React.FC<PreIntroLoaderProps> = ({ onComplete }) => {
 
   // Boot messages that appear during loading
   const bootMessages = [
-    'OMNIA BIOS v1.984',
+    'EDGAR BIOS v1.984',
     'COPYRIGHT (C) 1984 ELECTRIC DREAMS INC.',
     '',
     'INITIALIZING CRT DISPLAY...',
@@ -37,7 +38,7 @@ const PreIntroLoader: React.FC<PreIntroLoaderProps> = ({ onComplete }) => {
     'SYNCING EMOTION CORES...',
     'ACTIVATING CONSCIOUSNESS...',
     '',
-    '> OMNIA ONLINE',
+    '> EDGAR ONLINE',
     '> HELLO, FRIEND.'
   ];
 
@@ -159,7 +160,7 @@ const PreIntroLoader: React.FC<PreIntroLoaderProps> = ({ onComplete }) => {
           className="absolute inset-0 transition-all duration-1000"
           style={{
             background: isPressed
-              ? `radial-gradient(ellipse 60% 50% at 50% 50%, rgba(0,${50 + phase * 40},0,${0.1 + phase * 0.05}) 0%, transparent 70%)`
+              ? `radial-gradient(ellipse 60% 50% at 50% 50%, rgba(${80 + phase * 30},${40 + phase * 20},0,${0.08 + phase * 0.04}) 0%, transparent 70%)`
               : 'transparent'
           }}
         />
@@ -197,30 +198,54 @@ const PreIntroLoader: React.FC<PreIntroLoaderProps> = ({ onComplete }) => {
       {/* Main Content */}
       <div className="absolute inset-0 flex flex-col items-center justify-center z-30 font-mono">
 
-        {/* OMNIA Logo - ASCII Art Style */}
-        <div className="mb-8 text-center">
+        {/* EDGAR Small Image + ASCII Logo */}
+        <div className="mb-8 text-center flex flex-col items-center">
+          {/* Small edgar.png on top - commented out for now
+          <div className="relative mb-4">
+            <div
+              className="absolute -inset-4 blur-xl transition-all duration-500"
+              style={{
+                background: 'radial-gradient(circle, rgba(255,176,0,0.3) 0%, transparent 70%)',
+                opacity: isPressed ? 0.4 + phase * 0.1 : 0.15
+              }}
+            />
+            <img
+              src={edgarLogo}
+              alt="EDGAR"
+              className="relative z-10 w-20 sm:w-24 h-auto transition-all duration-300"
+              style={{
+                filter: isPressed
+                  ? `drop-shadow(0 0 ${8 + phase * 3}px rgba(255,176,0,0.5))`
+                  : 'drop-shadow(0 0 5px rgba(255,176,0,0.3))',
+                opacity: isPressed ? 0.5 + phase * 0.12 : 0.55,
+                imageRendering: 'auto'
+              }}
+            />
+          </div>
+          */}
+          {/* ASCII Art Logo */}
           <pre
-            className="text-ed-green-400 text-xs sm:text-sm leading-tight transition-all duration-300"
+            className="text-ed-amber-400 text-xs sm:text-sm leading-tight transition-all duration-300"
             style={{
               textShadow: isPressed
-                ? `0 0 ${10 + phase * 5}px rgba(0,255,0,0.8), 0 0 ${20 + phase * 5}px rgba(0,255,0,0.4)`
-                : '0 0 5px rgba(0,255,0,0.3)',
+                ? `0 0 ${10 + phase * 5}px rgba(255,176,0,0.7), 0 0 ${20 + phase * 5}px rgba(255,176,0,0.3)`
+                : '0 0 5px rgba(255,176,0,0.3)',
               opacity: isPressed ? 0.3 + phase * 0.15 : 0.5
             }}
           >
 {`
-  ██████╗ ███╗   ███╗███╗   ██╗██╗ █████╗
- ██╔═══██╗████╗ ████║████╗  ██║██║██╔══██╗
- ██║   ██║██╔████╔██║██╔██╗ ██║██║███████║
- ██║   ██║██║╚██╔╝██║██║╚██╗██║██║██╔══██║
- ╚██████╔╝██║ ╚═╝ ██║██║ ╚████║██║██║  ██║
-  ╚═════╝ ╚═╝     ╚═╝╚═╝  ╚═══╝╚═╝╚═╝  ╚═╝
+ ███████╗██████╗  ██████╗  █████╗ ██████╗
+ ██╔════╝██╔══██╗██╔════╝ ██╔══██╗██╔══██╗
+ █████╗  ██║  ██║██║  ███╗███████║██████╔╝
+ ██╔══╝  ██║  ██║██║   ██║██╔══██║██╔══██╗
+ ███████╗██████╔╝╚██████╔╝██║  ██║██║  ██║
+ ╚══════╝╚═════╝  ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝
 `}
           </pre>
           <div
-            className="text-ed-green-500/70 text-sm tracking-[0.5em] mt-2 transition-all duration-300"
+            className="text-ed-amber-500/70 text-sm tracking-[0.5em] mt-2 transition-all duration-300"
             style={{
-              textShadow: '0 0 10px rgba(0,255,0,0.5)',
+              textShadow: '0 0 10px rgba(255,176,0,0.4)',
               opacity: isPressed ? 0.5 + phase * 0.1 : 0.4
             }}
           >
@@ -237,9 +262,9 @@ const PreIntroLoader: React.FC<PreIntroLoaderProps> = ({ onComplete }) => {
             {bootLines.map((line, i) => (
               <div
                 key={i}
-                className="text-ed-green-400 text-xs sm:text-sm font-mono"
+                className="text-ed-green-400/70 text-xs sm:text-sm font-mono"
                 style={{
-                  textShadow: '0 0 5px rgba(0,255,0,0.5)',
+                  textShadow: '0 0 4px rgba(0,255,0,0.3)',
                   animation: 'typewriter-line 0.3s ease-out',
                   opacity: line.startsWith('>') ? 1 : 0.7
                 }}
@@ -248,7 +273,7 @@ const PreIntroLoader: React.FC<PreIntroLoaderProps> = ({ onComplete }) => {
               </div>
             ))}
             {cursorVisible && (
-              <span className="text-ed-green-400" style={{ textShadow: '0 0 10px rgba(0,255,0,0.8)' }}>
+              <span className="text-ed-amber-400" style={{ textShadow: '0 0 8px rgba(255,176,0,0.6)' }}>
                 █
               </span>
             )}
@@ -258,8 +283,8 @@ const PreIntroLoader: React.FC<PreIntroLoaderProps> = ({ onComplete }) => {
         {/* Progress Bar - Terminal Style */}
         {isPressed && (
           <div className="w-full max-w-md px-8">
-            <div className="flex items-center text-ed-green-400 text-xs font-mono mb-2">
-              <span style={{ textShadow: '0 0 5px rgba(0,255,0,0.5)' }}>
+            <div className="flex items-center text-ed-amber-400 text-xs font-mono mb-2">
+              <span style={{ textShadow: '0 0 5px rgba(255,176,0,0.4)' }}>
                 LOADING: [{'\u2588'.repeat(Math.floor(progress / 5))}{'\u2591'.repeat(20 - Math.floor(progress / 5))}] {Math.round(progress)}%
               </span>
             </div>
@@ -270,19 +295,19 @@ const PreIntroLoader: React.FC<PreIntroLoaderProps> = ({ onComplete }) => {
         {!isPressed && (
           <div className="text-center mt-8">
             <div
-              className="text-ed-green-400 text-lg font-mono tracking-wider mb-2"
+              className="text-ed-amber-400 text-lg font-mono tracking-wider mb-2"
               style={{
-                textShadow: '0 0 10px rgba(0,255,0,0.6)',
+                textShadow: '0 0 10px rgba(255,176,0,0.5)',
                 animation: 'pulse-glow 2s ease-in-out infinite'
               }}
             >
               [ PRESS AND HOLD TO BOOT ]
             </div>
             <div
-              className="text-ed-green-600 text-xs font-mono"
-              style={{ textShadow: '0 0 5px rgba(0,255,0,0.3)' }}
+              className="text-ed-amber-600 text-xs font-mono"
+              style={{ textShadow: '0 0 5px rgba(255,176,0,0.3)' }}
             >
-              Hold down to initialize OMNIA OS
+              Hold down to initialize EDGAR OS
             </div>
           </div>
         )}
@@ -292,22 +317,22 @@ const PreIntroLoader: React.FC<PreIntroLoaderProps> = ({ onComplete }) => {
           <div
             className="w-2 h-2 rounded-full transition-all duration-300"
             style={{
-              backgroundColor: isPressed ? '#00FF00' : '#004400',
-              boxShadow: isPressed ? '0 0 10px #00FF00, 0 0 20px #00FF00' : 'none'
+              backgroundColor: isPressed ? '#FFB000' : '#443300',
+              boxShadow: isPressed ? '0 0 10px #FFB000, 0 0 20px #FFB000' : 'none'
             }}
           />
           <span
-            className="text-ed-green-600 text-xs font-mono"
-            style={{ textShadow: '0 0 3px rgba(0,255,0,0.3)' }}
+            className="text-ed-amber-600 text-xs font-mono"
+            style={{ textShadow: '0 0 3px rgba(255,176,0,0.3)' }}
           >
             {isPressed ? 'POWER ON' : 'STANDBY'}
           </span>
         </div>
 
         {/* Version info */}
-        <div className="absolute bottom-8 right-8 text-ed-green-700 text-xs font-mono">
-          <span style={{ textShadow: '0 0 3px rgba(0,255,0,0.2)' }}>
-            OMNIA BIOS v1.984
+        <div className="absolute bottom-8 right-8 text-ed-amber-700 text-xs font-mono">
+          <span style={{ textShadow: '0 0 3px rgba(255,176,0,0.2)' }}>
+            EDGAR BIOS v1.984
           </span>
         </div>
       </div>
@@ -334,11 +359,11 @@ const PreIntroLoader: React.FC<PreIntroLoaderProps> = ({ onComplete }) => {
         @keyframes pulse-glow {
           0%, 100% {
             opacity: 0.7;
-            text-shadow: 0 0 10px rgba(0,255,0,0.6);
+            text-shadow: 0 0 10px rgba(255,176,0,0.5);
           }
           50% {
             opacity: 1;
-            text-shadow: 0 0 20px rgba(0,255,0,0.8), 0 0 30px rgba(0,255,0,0.4);
+            text-shadow: 0 0 20px rgba(255,176,0,0.6), 0 0 30px rgba(255,176,0,0.3);
           }
         }
 
